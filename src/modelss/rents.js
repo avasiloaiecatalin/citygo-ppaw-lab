@@ -2,7 +2,7 @@
 
 const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
-  const Rents = sequelize.define('rents', {
+  return sequelize.define('rents', {
     id: {
       autoIncrement: true,
       type: DataTypes.INTEGER,
@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
         model: 'scooters',
         key: 'id'
       },
-      unique: "rents_ibfk_1"
+      unique: "rents_ibfk_31"
     },
     date1: {
       type: DataTypes.DATE,
@@ -67,5 +67,4 @@ module.exports = function(sequelize, DataTypes) {
       },
     ]
   });
-  await Rents.sync();
 };

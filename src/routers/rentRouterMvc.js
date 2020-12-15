@@ -13,7 +13,6 @@ const mysql = {
 var sequelize = new Sequelize(mysql.dbname, mysql.user, mysql.pass, mysql.options);
 var models = initModels(sequelize);
 var scooter = models.scooters;
-var rent = models.rents
 
 const controller = require("../controllers/rentController")
 
@@ -38,8 +37,8 @@ router.get("/rent/getAll", controller.renderGetAllPage)
 router.get("/rent/add", controller.renderAddPage)
 
 router.post("/rent/add", async(req, res)=> {
-    try{
         try{
+            var rent = await models.rents
             const dateSplit = req.body.date.split(" to")
             req.body.date1 = dateSplit[0]
             req.body.date2 = dateSplit[1]
@@ -49,9 +48,6 @@ router.post("/rent/add", async(req, res)=> {
         } catch(err){
             res.send(err.message)
         }
-    }catch(err){
-        res.send(err.message)
-    }
 })
 
 

@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const userRouter = require("./routers/userRouter")
 const scootersRouter = require("./routers/scooterRouter")
 const scooterRouterMvc = require('./routers/scooterRouterMvc')
+const bookingsRouter = require('./routers/bookingsRouter')
 
 const app = express()
 
@@ -17,6 +18,7 @@ app.use(express.static("views"))
 app.use(userRouter)
 app.use(scootersRouter)
 app.use(scooterRouterMvc)
+app.use(bookingsRouter)
 
 // client
 const clientRouterMvc = require("./routers/clientRouterMvc")
