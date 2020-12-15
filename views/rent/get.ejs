@@ -1,0 +1,32 @@
+<body>
+  <%- include("./header.ejs") %>
+  <div class="container">
+    <br>
+    <center><h2><%- title %></h2></center>
+    <br>
+    <div class="row">
+      <div class="col d-flex justify-content-center">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="fas fa-sm fa-user"></i> <a href="/client/get/<%- c.id %>"><%- c.first_name %> <%- c.last_name %></a> <i class="fas fa-arrows-alt-h"></i> <a href="/scooter/get/<%- s.id %>"><%- s.name %></a> <i class="fas fa-sm fa-bicycle"></i>
+            </h5>
+            <p class="card-text">
+              <span><i class="fas fa-calendar-plus"></i> <%- r.date1 %></span> 
+            </p>
+            <p class="card-text">
+              <span><i class="fas fa-calendar-check"></i> <%- r.date2 %></span>
+            </p>
+            <p class="card-text">
+              <span><i class="fas fa-wallet"></i> Total de plata: <strong><%- r.topay %> LEI</span></strong>
+            </p>
+            <a href="/rent/update/<%- r.id %>" class="btn btn-primary btn-block">Modifica</a>
+            <a href="/rent/delete/<%- r.id %>" class="btn btn-danger btn-block">Sterge</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  <%- include("./footer.ejs") %>
+</body>

@@ -1,0 +1,34 @@
+<body>
+  <%- include("./header.ejs") %>
+  <div class="container">
+    <br>
+    <center><h2><%- title %></h2></center>
+    <br>
+    <div class="row">
+      <% for(var i = 0; i< r.length; i++){ %>
+      <div class="col-sm-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">
+              <i class="fas fa-sm fa-user"></i> <a href="/client/get/<%- r[i].dataValues.renter %>"><%- r[i].dataValues.client_name %></a> <i class="fas fa-arrows-alt-h"></i> <a href="/scooter/get/<%- r[i].dataValues.scooter_id %>"><%- r[i].dataValues.scooter_name %></a> <i class="fas fa-sm fa-bicycle"></i>
+            </h5>
+            <p class="card-text">
+              <span><i class="fas fa-calendar-plus"></i> <%- r[i].dataValues.date1 %></span> 
+            </p>
+            <p class="card-text">
+              <span><i class="fas fa-calendar-check"></i> <%- r[i].dataValues.date2 %></span>
+            </p>
+            <p class="card-text">
+              <span><i class="fas fa-wallet"></i> Total de plata: <strong><%- r[i].dataValues.topay %> LEI</span></strong>
+            </p>
+            <a href="/rent/get/<%- r[i].dataValues.id %>" class="btn btn-primary btn-block">Vezi</a>
+            <a href="/rent/update/<%- r[i].dataValues.id %>" class="btn btn-primary btn-block">Modifica</a>
+            <a href="/rent/delete/<%- r[i].dataValues.id %>" class="btn btn-danger btn-block">Sterge</a>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+  </div>
+  <%- include("./footer.ejs") %>
+</body>

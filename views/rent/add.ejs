@@ -1,0 +1,73 @@
+<body>
+    <%- include("./header.ejs") %>
+    <div class="container">
+        <div class="row">
+          <div class="col"></div>
+
+          <div class="col-6">
+            <h2><%- title %></h2>
+            <form method="POST">
+            <% if(s.length > 0){ %>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Trotineta</span>
+                <select  class="form-control form-select" name="scooter_id">
+                    <% 
+                        for(var i = 0; i< s.length; i++){ %>
+                    <option value="<%- s[i].dataValues.id %>"><%- s[i].dataValues.name %></option>
+                    <% 
+                        }
+                    %>
+                </select>
+            </div>
+            <%
+            } else{
+                %>
+                <div class="input-group mb-3">
+                    <a class="btn btn-primary btn-block" href="/scooter/add">Adauga trotineta</a>
+                </div>
+                <%
+            }
+            %>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Date inchiriere</span>
+                <input type="text" name="date" class="form-control" id="date1" min="1" max="100">
+            </div>
+            <% if(c.length > 0){ %>
+            <div class="input-group mb-3">
+                <span class="input-group-text">Client</span>
+                <select  class="form-control form-select" name="renter">
+                    <% 
+                        for(var i = 0; i< c.length; i++){ %>
+                    <option value="<%- c[i].dataValues.id %>"><%- c[i].dataValues.first_name %> <%- c[i].dataValues.last_name %></option>
+                    <% 
+                        } 
+                    %>
+                </select>
+            </div>
+            <%
+            } else{
+                %>
+                <div class="input-group mb-3">
+                    <a class="btn btn-primary btn-block" href="/client/add">Adauga client</a>
+                </div>
+                <%
+            }
+            %>
+            <button <% if(s.length == 0 || c.length == 0) { %> disabled <% } %> type="submit" class="btn btn-primary btn-block">Adauga</button>
+            </form>
+
+          </div>
+          <div class="col"></div>
+        </div>
+    </div>
+    <%- include("./footer.ejs") %>
+    <!-- datedropper init -->
+<script>
+    flatpickr("#date1", {
+        mode: "range",
+        enableTime: true,
+        dateFormat: "Y-m-d H:i",
+        minDate: new Date()
+    });
+</script>
+</body>

@@ -1,0 +1,50 @@
+<body>
+    <%- include("./header.ejs") %>
+    <div class="container">
+        <div class="row">
+          <div class="col"></div>
+
+          <div class="col-6">
+            <h2><%- title %></h2>
+            <form method="POST">
+            <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Nume</span>
+            <input type="text" value="<%- s.name %>" name="name" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Nivelul bateriei</span>
+                <input type="number" value="<%- s.battery %>" name="battery" class="form-control" min="0" max="100">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Pret / ora</span>
+                <input type="number" value="<%- s.price_per_hour %>" name="price_per_hour" class="form-control" min="1" max="100">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Viteza</span>
+                <input type="number" value="<%- s.speed %>" name="speed" class="form-control" min="1" max="120">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Greutate admisa</span>
+                <input type="number" value="<%- s.max_weight %>" name="max_weight" class="form-control" min="1" max="120">
+            </div>
+            <% if(r){
+            %>
+            <h5 class="card-title"><span><i class="fas fa-lock" style="color: red"></i></span> Este inchiriata!</h5>
+            <%
+            } %>
+            <button type="submit" class="btn btn-primary btn-block">Modifica</button>
+            <a href="/scooter/delete/<%- s.id %>" class="btn btn-danger btn-block">Sterge</a>
+            <% if(r){
+                %>
+                <span>* Prin stergerea trotinetei se vor sterge si datele despre inchiriere.</span>
+                <%
+                } %>
+            
+            </form>
+
+          </div>
+          <div class="col"></div>
+        </div>
+    </div>
+    <%- include("./footer.ejs") %>
+</body>

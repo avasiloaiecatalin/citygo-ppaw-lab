@@ -1,0 +1,56 @@
+<body>
+    <%- include("./header.ejs") %>
+    <div class="container">
+      <br>
+      <center><h2><%- title %></h2></center>
+      <br>
+      <div class="row">
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Nume</th>
+              <th scope="col">Prenume</th>
+              <th scope="col">Actiuni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><%- s.last_name %></td>
+              <td><%- s.first_name %></td>
+              <td>
+                <a href="/client/update/<%- s.id %>"><i class="fas fa-lg fa-edit"></i></a>
+                <a href="/client/delete/<%- s.id %>"><i style="color: #f03737" class="fas fa-lg fa-times"></i></a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <% if(r){ %>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Trotineta</th>
+              <th scope="col">Data inchiriere</th>
+              <th scope="col">Data predare</th>
+              <th scope="col">Actiuni</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(var i=0; i< r.length; i++){ %>
+            <tr>
+              <td><strong><a href="/scooter/get/<%- r[i].dataValues.scooter_id %>"><%- r[i].dataValues.scooter_id %></a></strong></td>
+              <td><%- r[i].dataValues.date1 %></td>
+              <td><%- r[i].dataValues.date2 %></td>
+              <td>
+                <a href="/rent/get/<%- r[i].dataValues.id %>"><i class="fas fa-lg fa-address-book"></i></a>
+                <a href="/rent/update/<%- r[i].dataValues.id %>"><i class="fas fa-lg fa-edit"></i></a>
+                <a href="/rent/delete/<%- r[i].dataValues.id %>"><i style="color: #f03737" class="fas fa-lg fa-times"></i></a>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+        <% } %>
+      </div>
+    </div>
+    <%- include("./footer.ejs") %>
+</body>

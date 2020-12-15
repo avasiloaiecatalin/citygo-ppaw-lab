@@ -1,0 +1,53 @@
+<body>
+    <%- include("./header.ejs") %>
+    <div class="container">
+      <br>
+      <center><h2><%- title %></h2></center>
+      <br>
+      <div class="row">
+        <div class="col d-flex justify-content-center">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">
+                <%
+                var rent_status = 0
+                  if(r && r.scooter_id == s.id){
+                    rent_status = 1
+                  } 
+                if(rent_status == 0){
+                  %>
+                  <span><i class="fas fa-lock-open" style="color: green"></i></span>
+                  <a href="/rent/add" class="btn btn-success btn-sm">Inchiriaza</a>
+              <%
+                }
+                else{
+                  %>
+                  <span><i class="fas fa-lock" style="color: red"></i></span>
+                  <a href="/rent/get/<%- r.id %>" class="btn btn-danger btn-sm">Vezi inchirierea</a>
+                  <%
+                }
+              %>
+                <%- s.name %>
+              </h5>
+              <p class="card-text">
+                <span><i class="fas fa-battery-three-quarters"></i> <%- s.battery %>%</span> 
+                <span><i class="fas fa-dollar-sign"></i> <%- s.price_per_hour %> lei / ora</span>
+                <span><i class="fas fa-tachometer-alt"></i> <%- s.speed %> km/h</span>
+                <span><i class="fas fa-weight-hanging"></i> <%- s.max_weight %> kg</span>
+              </p>
+              <p class="card-text">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=scooter_id=<%- s.qr %>">
+              </p>
+              <a href="/scooter/update/<%- s.id %>" class="btn btn-primary btn-block">Modifica</a>
+              <a href="/scooter/delete/<%- s.id %>" class="btn btn-danger btn-block">Sterge</a>
+              <% if(rent_status == 1){ %>
+                <span>* Prin stergerea trotinetei se vor sterge si datele despre inchiriere.</span>   
+              <% } %>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+    <%- include("./footer.ejs") %>
+</body>

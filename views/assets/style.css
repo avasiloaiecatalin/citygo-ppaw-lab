@@ -1,0 +1,34 @@
+.logo {
+  height: 45px;
+}
+
+.btn-custom {
+  background-color: #8cc63f;
+  border: 1px solid #699431;
+  color: black;
+}
+
+.btn-custom:focus {
+  background-color: #699431;
+  color: white;
+}
+
+.btn-custom:hover {
+  background-color: #699431;
+}
+
+td a {
+  color: #212529;
+}
+
+td a .fa-times {
+  color: #f03737;
+}
+
+td a:hover {
+  color: #000;
+}
+
+td a:hover .fa-times {
+  color: #b82929;
+}

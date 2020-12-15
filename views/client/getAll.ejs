@@ -1,0 +1,34 @@
+<body>
+  <%- include("./header.ejs") %>
+  
+  <div class="container">
+    <br>
+    <center><h2><%- title %></h2></center>
+    <br>
+    <div class="row">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Nume</th>
+            <th scope="col">Prenume</th>
+            <th scope="col">Actiuni</th>
+          </tr>
+        </thead>
+        <tbody>
+      <% for(var i = 0; i< s.length; i++){ %>
+            <tr>
+              <td><%- s[i].dataValues.last_name %></td>
+              <td><%- s[i].dataValues.first_name %></td>
+              <td>
+                <a href="/client/get/<%- s[i].dataValues.id %>"><i class="fas fa-lg fa-address-book"></i></a>
+                <a href="/client/update/<%- s[i].dataValues.id %>"><i class="fas fa-lg fa-edit"></i></a>
+                <a href="/client/delete/<%- s[i].dataValues.id %>"><i class="fas fa-lg fa-times"></i></a>
+              </td>
+            </tr>
+      <% } %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <%- include("./footer.ejs") %>
+</body>
